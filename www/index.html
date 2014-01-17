@@ -25,12 +25,6 @@
     </div>
   </div>
 
-  <!-- embed of the foodcoop website; don't redirect because we want to catch some keys -->
-  <div data-role='page' id='page-embed' data-title='Foodsoft (online)'>
-    <iframe id='embedframe' height='100%' width='100%' seamless='true' data-role='content'>
-    </iframe>
-  </div>
-
   <!-- about page -->
   <div data-role='page' id='page-about' data-title='About Foodsoft'>
     <div data-role='header'>
@@ -58,24 +52,32 @@
   <!-- code -->
   <script type="text/javascript" src="phonegap.js"></script>
   <script type="text/javascript" src="assets/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript">
+    $(document).bind('mobileinit', function () {
+      $.extend($.mobile, {
+        defaultPageTransition: 'none'
+      });
+    });
+  </script>
   <script type="text/javascript" src="assets/jquery.mobile-1.4.0.min.js"></script>
   <script type="text/javascript">
+    var sitewnd = null;
 
-    $(function() {
+    $(document).bind('deviceready', function() {
 
       // we need to be online to access the website
-      $(document).on('offline', function() {
+      $(document).bind('offline', function() {
         if (localStorage['ignore_offline']) return;
-        if (currentPage() == 'page-embed') {
+        if (sitewnd) { // TODO check if sitewnd has focus
           $('#page-offline').popup('open');
         }
       });
-      $(document).on('online', function() {
+      $(document).bind('online', function() {
         if (localStorage['ignore_offline']) return;
         $('.ui-dialog#page-offline').dialog('close');
       });
-      $(document).on('menubutton', function() {
-        // TODO popup menu buttons
+      $(document).bind('menubutton', function() {
+        // TODO popup menu
       });
 
       //visitSite();
@@ -86,8 +88,10 @@
       //var url = localStorage['default_url'];
       var url = 'https://order.foodcoop.nl/demo/';
       if (url) {
-        $('#embedframe').attr('src', url);
-        $.mobile.changePage('#page-embed');
+        sitewnd = window.open(encodeURI(url), '_blank');
+        $(sitewnd).bind('loadstop', function() {
+          sitewnd.executeScript({file: 'inject.js'});
+        });
       }
     }
 
