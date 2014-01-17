@@ -1,7 +1,99 @@
+<!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <title>Foodsoft</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="assets/jquery.mobile-1.4.0.min.css">
+</head>
 <body>
-<script type="text/javascript">
-  window.location = 'https://order.foodcoop.nl/demo';
-</script>
+
+  <!-- frontpage -->
+  <div data-role='page' id='page-front' data-title='Foodsoft'>
+    <div data-role='header'>
+      <h1>Foodsoft</h1>
+    </div>
+
+    <div data-role='content'>
+      <p>Welcome to the Foodsoft app! This app will help you to work with your local foodcoop even easier.</p>
+      <p><a href='javascript:visitSite();' data-role='button'>go to foodcoop</a></p>
+      <p><a href='#page-about' data-role='button'>about</a></p>
+    </div>
+
+    <div data-role='footer'>
+      <p><a href='#page-settings'></a></p>
+    </div>
+  </div>
+
+  <!-- embed of the foodcoop website; don't redirect because we want to catch some keys -->
+  <div data-role='page' id='page-embed' data-title='Foodsoft (online)'>
+    <iframe id='embedframe' height='100%' width='100%' seamless='true' data-role='content'>
+    </iframe>
+  </div>
+
+  <!-- about page -->
+  <div data-role='page' id='page-about' data-title='About Foodsoft'>
+    <div data-role='header'>
+      <a href="#page-front" data-icon="arrow-l" data-direction="reverse">Back</a>
+      <h1>About</h1>
+    </div>
+    
+    <div data-role='content'>
+      <ul data-role='listview' data-inset='true'>
+        <li data-role='list-divider'>Development</li>
+        <li>
+          <a href='mailto:foodsoft@foodcoop.nl'>Foodcoop NL</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- offline popup -->
+  <div data-role='dialog' id='dialog-offline' data-title='Foodsoft (offline)'>
+    <div data-role='content'>
+      <p>You need an internet connection to access your foodcoop.</p>
+    </div>
+  </div>
+
+  <!-- code -->
+  <script type="text/javascript" src="phonegap.js"></script>
+  <script type="text/javascript" src="assets/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript" src="assets/jquery.mobile-1.4.0.min.js"></script>
+  <script type="text/javascript">
+
+    $(function() {
+
+      // we need to be online to access the website
+      $(document).on('offline', function() {
+        if (localStorage['ignore_offline']) return;
+        if (currentPage() == 'page-embed') {
+          $('#page-offline').popup('open');
+        }
+      });
+      $(document).on('online', function() {
+        if (localStorage['ignore_offline']) return;
+        $('.ui-dialog#page-offline').dialog('close');
+      });
+      $(document).on('menubutton', function() {
+        // TODO popup menu buttons
+      });
+
+      //visitSite();
+    });
+
+    function visitSite() {
+      // if we have a foodcoop preference, go there immediately
+      //var url = localStorage['default_url'];
+      var url = 'https://order.foodcoop.nl/demo/';
+      if (url) {
+        $('#embedframe').attr('src', url);
+        $.mobile.changePage('#page-embed');
+      }
+    }
+
+    function currentPage() {
+      return $('.ui-page-active').attr('id');
+    }
+  </script>
 </body>
 </html>
