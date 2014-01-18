@@ -32,5 +32,5 @@
     <icon src="icon.png" />
 
     <!-- for obtaining the list of foodcoops known -->
-    <access origin="https://order.foodcoop.nl/" />
+    <access origin="https://order.foodcoop.nl/*" />
 </widget>
