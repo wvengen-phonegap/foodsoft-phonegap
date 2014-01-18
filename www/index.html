@@ -28,7 +28,7 @@
   <!-- about page -->
   <div data-role='page' id='page-about' data-title='About Foodsoft'>
     <div data-role='header'>
-      <a href="javascript:history.back()" data-icon="arrow-l">Back</a>
+      <a href="javascript:history.back()" data-icon="arrow-l" data-direction="reverse">Back</a>
       <h1>About</h1>
     </div>
     
@@ -92,7 +92,7 @@
         sitewnd = window.open(encodeURI(url), '_blank', 'location=no');
         $(sitewnd).bind('loadstop', function() {
           // inAppBrowser doesn't handle back by itself
-          $(document).bind('backbutton', function() {
+          document.addEventListener('backbutton', function() {
             // TODO check window still exists
             cordova.exec(null, null, "InAppBrowser", "injectScriptCode", ["history.back()"]);
           }, false);
@@ -107,10 +107,6 @@
           alert('Error: '+ev.message);
         });
       }
-    }
-
-    function currentPage() {
-      return $('.ui-page-active').attr('id');
     }
   </script>
 </body>
