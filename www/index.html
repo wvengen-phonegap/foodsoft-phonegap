@@ -91,8 +91,17 @@
         spinnerplugin.show({});
         sitewnd = window.open(encodeURI(url), '_blank', 'location=no');
         $(sitewnd).bind('loadstop', function() {
+          // inAppBrowser doesn't handle back by itself
+          sitewnd.addEventListener('backbutton', function() {
+            cordova.exec(null, null, "InAppBrowser", "injectScriptCode", ["history.back()"]);
+          }, false);
+          // inject javascript to let foodsoft offer mobile integration
           sitewnd.executeScript({file: 'inject.js'});
           spinnerplugin.hide();
+        });
+        $(sitewnd).bind('loaderror', function(ev) {
+          spinnerplugin.hide();
+          alert('Error: '+ev.message);
         });
       }
     }
