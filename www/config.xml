@@ -43,10 +43,15 @@
     <gap:config-file platform="android" parent="/manifest/application/activity[android:name='.Foodsoft']">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"></action>
+      <intent-filter>
+      <!--
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"></action>
         <action android:name="android.intent.action.DEFAULT"></action>
         <action android:name="android.intent.action.BROWSABLE"></action>
-	<data android:scheme="https" android:host="www.foodcoop.nl" android:pathPrefix="android-app"></data>
+	<data android:scheme="https" android:host="foodcoops.github.com" android:pathPrefix="android-app"></data>
       <intent-filter>
+      -->
     </gap:config-file>
 
     <!-- for obtaining the list of foodcoops known -->
