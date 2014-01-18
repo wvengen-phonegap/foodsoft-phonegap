@@ -28,7 +28,7 @@
   <!-- about page -->
   <div data-role='page' id='page-about' data-title='About Foodsoft'>
     <div data-role='header'>
-      <a href="#page-front" data-icon="arrow-l" data-direction="reverse">Back</a>
+      <a href="javascript:history.back()" data-icon="arrow-l">Back</a>
       <h1>About</h1>
     </div>
     
@@ -86,7 +86,7 @@
     function visitSite() {
       // if we have a foodcoop preference, go there immediately
       //var url = localStorage['default_url'];
-      var url = 'https://order.foodcoop.nl/demo/';
+      var url = 'https://order.foodcoop.nl/' + 'app' + 'test.html';
       if (url) {
         spinnerplugin.show({});
         sitewnd = window.open(encodeURI(url), '_blank', 'location=no');
