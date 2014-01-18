@@ -102,6 +102,12 @@
           });
           spinnerplugin.hide();
         });
+        // handle external links in an external browser
+        $(sitewnd).bind('loadstart', function(ev) {
+          if (ev.url.indexOf('https://order.foodcoop.nl/')!=0) {
+            window.open(encodeURI(ev.url), '_system');
+          }
+        });
         $(sitewnd).bind('loaderror', function(ev) {
           spinnerplugin.hide();
           alert('Error: '+ev.message);
