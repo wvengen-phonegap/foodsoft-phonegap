@@ -41,7 +41,7 @@
 	   https://github.com/ComunidadeExpresso/expressomobile-www/tree/fc578e9567bd4dbada418feec075d2c0ed10888d
       -->
     <gap:config-file platform="android" parent="/manifest/application">
-      <activity android:label="hihi" android:name=".FoodsoftXYZ">
+      <activity android:name="com.phonegap.DroidGap">
         <intent-filter>
           <action android:name="android.intent.action.VIEW"/>
           <action android:name="android.intent.action.DEFAULT" />
