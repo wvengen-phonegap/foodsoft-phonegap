@@ -50,8 +50,14 @@
     </gap:config-file>
 
     <!-- check if patch works -->
+    <!-- YES
     <gap:config-file platform="android" parent="/manifest">
       <supports-screens android:xlargeScreens="false" android:largeScreens="false" android:smallScreens="false" />
+    </gap:config-file> -->
+    <gap:config-file platform="android" parent="/manifest/application">
+      <activity android:label="Hi there" android:name="com.phonegap.DroidGap">
+        <intent-filter/>
+      </activity>
     </gap:config-file>
 
     <!-- for obtaining the list of foodcoops known -->
