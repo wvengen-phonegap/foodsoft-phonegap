@@ -28,44 +28,12 @@
 
     <gap:platform name="android" />
 
-    <!-- <gap:plugin name="org.apache.cordova.inappbrowser" /> -->
     <gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
-    <gap:plugin name="net.tunts.webintent" />
+    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+      <param name="URL_SCHEME" value="foodsoft" />
+    </gap:plugin>
 
     <icon src="icon.png" />
-
-    <!-- configure intent -->
-    <!-- this prob http://community.phonegap.com/nitobi/topics/web_intent_filter_in_config_xml_androidmanifest_xml
-	   http://www.raymondcamden.com/index.cfm/2012/5/1/Example-of-Intents-with-PhoneGap
-	   http://smus.com/android-phonegap-plugins/
-	   https://github.com/ComunidadeExpresso/expressomobile-www/tree/fc578e9567bd4dbada418feec075d2c0ed10888d
-      -->
-    <gap:config-file platform="android" parent="/manifest/application">
-        <intent-filter>
-          <action android:name="android.intent.action.VIEW"/>
-          <action android:name="android.intent.action.DEFAULT" />
-          <action android:name="android.intent.action.BROWSABLE" />
-          <data android:scheme="https" android:host="foodcoops.github.com" android:pathPrefix="android-app" />
-        </intent-filter>
-    </gap:config-file>
-
-    <gap:url-scheme name="com.github.foodcoops.urlscheme" role="None">
-      <scheme>foodsoft</scheme>
-    </gap:url-scheme>
-    <!-- TODO for iOS: gap:url-scheme  -->
-
-    <!-- check if patch works -->
-    <!-- YES
-    <gap:config-file platform="android" parent="/manifest">
-      <supports-screens android:xlargeScreens="false" android:largeScreens="false" android:smallScreens="false" />
-    </gap:config-file> -->
-    <!-- YES
-    <gap:config-file platform="android" parent="/manifest/application">
-      <activity android:label="Hi there" android:name="com.phonegap.DroidGap">
-        <intent-filter/>
-      </activity>
-    </gap:config-file>
-    -->
 
     <!-- for obtaining the list of foodcoops known -->
     <access origin="https://order.foodcoop.nl/*" />
