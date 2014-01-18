@@ -27,7 +27,10 @@
     <preference name="android-installLocation" value="auto" />
 
     <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
 
     <icon src="icon.png" />
-    <access origin="http://127.0.0.1*" />
+
+    <!-- for obtaining the list of foodcoops known -->
+    <access origin="https://order.foodcoop.nl/" />
 </widget>

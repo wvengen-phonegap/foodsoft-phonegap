@@ -88,9 +88,11 @@
       //var url = localStorage['default_url'];
       var url = 'https://order.foodcoop.nl/demo/';
       if (url) {
-        sitewnd = window.open(encodeURI(url), '_blank');
+        spinnerplugin.show({});
+        sitewnd = window.open(encodeURI(url), '_blank', 'location=no');
         $(sitewnd).bind('loadstop', function() {
           sitewnd.executeScript({file: 'inject.js'});
+          spinnerplugin.hide();
         });
       }
     }
