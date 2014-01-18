@@ -92,11 +92,14 @@
         sitewnd = window.open(encodeURI(url), '_blank', 'location=no');
         $(sitewnd).bind('loadstop', function() {
           // inAppBrowser doesn't handle back by itself
-          sitewnd.addEventListener('backbutton', function() {
+          $(document).bind('backbutton', function() {
+            // TODO check window still exists
             cordova.exec(null, null, "InAppBrowser", "injectScriptCode", ["history.back()"]);
           }, false);
           // inject javascript to let foodsoft offer mobile integration
-          sitewnd.executeScript({file: 'inject.js'});
+          sitewnd.executeScript({code:
+            'var foodsoftMobile = true;'
+          });
           spinnerplugin.hide();
         });
         $(sitewnd).bind('loaderror', function(ev) {
