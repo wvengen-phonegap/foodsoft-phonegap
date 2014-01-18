@@ -45,6 +45,7 @@
         <action android:name="android.intent.action.VIEW"></action>
         <action android:name="android.intent.action.DEFAULT"></action>
         <action android:name="android.intent.action.BROWSABLE"></action>
+	<data android:scheme="https" android:host="foodcoops.github.com" android:pathPrefix="android-app"></data>
       </intent-filter>
       <!--
       <intent-filter>
