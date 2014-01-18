@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.github.foodcoops" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.github.foodcoops" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Foodsoft</name>
     <description>
         Web-based software to manage a non-profit food coop (product catalog, ordering, accounting, job scheduling).
@@ -26,10 +26,28 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
 
+    <gap:platform name="android" />
+
     <!-- <gap:plugin name="org.apache.cordova.inappbrowser" /> -->
     <gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
+    <gap:plugin name="net.tunts.webintent" />
 
     <icon src="icon.png" />
+
+    <!-- configure intent -->
+    <!-- this prob http://community.phonegap.com/nitobi/topics/web_intent_filter_in_config_xml_androidmanifest_xml
+	   http://www.raymondcamden.com/index.cfm/2012/5/1/Example-of-Intents-with-PhoneGap
+	   http://smus.com/android-phonegap-plugins/
+	   https://github.com/ComunidadeExpresso/expressomobile-www/tree/fc578e9567bd4dbada418feec075d2c0ed10888d
+      -->
+    <gap:config-file platform="android" parent="/manifest/application">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"></action>
+        <action android:name="android.intent.action.DEFAULT"></action>
+        <action android:name="android.intent.action.BROWSABLE"></action>
+	<data android:scheme="https" android:host="www.foodcoop.nl" android:pathPrefix="android-app"></data>
+      <intent-filter>
+    </gap:config-file>
 
     <!-- for obtaining the list of foodcoops known -->
     <access origin="https://order.foodcoop.nl/*" />
