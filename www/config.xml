@@ -40,13 +40,15 @@
 	   http://smus.com/android-phonegap-plugins/
 	   https://github.com/ComunidadeExpresso/expressomobile-www/tree/fc578e9567bd4dbada418feec075d2c0ed10888d
       -->
-    <gap:config-file platform="android" parent="/manifest/application/activity[@android:name='.Foodsoft']">
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW"></action>
-        <action android:name="android.intent.action.DEFAULT"></action>
-        <action android:name="android.intent.action.BROWSABLE"></action>
-        <data android:scheme="https" android:host="foodcoops.github.com" android:pathPrefix="android-app"></data>
-      </intent-filter>
+    <gap:config-file platform="android" parent="/manifest/application">
+      <activity android:label="@string/app_name" android:name=".Foodsoft">
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW"/>
+          <action android:name="android.intent.action.DEFAULT" />
+          <action android:name="android.intent.action.BROWSABLE" />
+          <data android:scheme="https" android:host="foodcoops.github.com" android:pathPrefix="android-app" />
+        </intent-filter>
+      </activity>
     </gap:config-file>
 
     <!-- check if patch works -->
