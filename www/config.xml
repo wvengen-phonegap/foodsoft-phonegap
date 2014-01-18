@@ -50,7 +50,7 @@
       <intent-filter>
     </gap:config-file>
       -->
-    <gap:config-file platform="android" parent="/manifest">
+    <gap:config-file platform="android" parent="/manifest/application">
     </gap:config-file>
 
     <!-- for obtaining the list of foodcoops known -->
