@@ -40,6 +40,7 @@
 	   http://smus.com/android-phonegap-plugins/
 	   https://github.com/ComunidadeExpresso/expressomobile-www/tree/fc578e9567bd4dbada418feec075d2c0ed10888d
       -->
+	    <!--
     <gap:config-file platform="android" parent="/manifest/application">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"></action>
@@ -47,6 +48,9 @@
         <action android:name="android.intent.action.BROWSABLE"></action>
 	<data android:scheme="https" android:host="www.foodcoop.nl" android:pathPrefix="android-app"></data>
       <intent-filter>
+    </gap:config-file>
+      -->
+    <gap:config-file platform="android" parent="/manifest">
     </gap:config-file>
 
     <!-- for obtaining the list of foodcoops known -->
