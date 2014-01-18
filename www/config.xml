@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.github.foodcoops" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>Foodsoft</name>
+    <name>Foodsoft (Dev)</name>
     <description>
-        Web-based software to manage a non-profit food coop (product catalog, ordering, accounting, job scheduling).
+        DEVELOPMENT VERSION of web-based software to manage a non-profit food coop (product catalog, ordering, accounting, job scheduling).
     </description>
     <author email="foodsoft@foodcoop.nl" href="http://www.foodcoop.nl/">
         Foodsoft Developers
@@ -28,13 +28,12 @@
 
     <gap:platform name="android" />
 
-    <gap:plugin name="it.mobimentum.phonegapspinnerplugin" />
     <gap:plugin name="nl.x-services.plugins.launchmyapp">
       <param name="URL_SCHEME" value="foodsoft" />
     </gap:plugin>
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 
     <icon src="icon.png" />
 
-    <!-- for obtaining the list of foodcoops known -->
-    <access origin="https://order.foodcoop.nl/*" />
+    <access origin="*" />
 </widget>

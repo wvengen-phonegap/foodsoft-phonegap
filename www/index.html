@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Foodsoft</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Foodsoft (dev)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.0.min.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
     </div>
 
     <div data-role='content'>
-      <p>Placeholder.</p>
+      <p>Placeholder, please wait until data is loaded...</p>
     </div>
   </div>
 
@@ -23,12 +23,15 @@
   <script type="text/javascript" src="js/plugins/LaunchMyApp.js"></script>
   <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
   <script type="text/javascript">
-    $(document).bind( "mobileinit", function() {
+    $(document).bind('mobileinit', function() {
       $.mobile.allowCrossDomainPages = true;
       $.mobile.defaultPageTransition = 'none';
     });
   </script>
   <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+  <script type="text/javascript" src="js/purl.js"></script>
+
+  <!-- for development edition, reference remote url -->
   <script type="text/javascript" src="https://order.foodcoop.nl/android-app/main.js"></script>
 
 </body>
