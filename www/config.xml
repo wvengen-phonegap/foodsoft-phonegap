@@ -43,6 +43,8 @@
     <gap:config-file platform="android" parent="/manifest/application/activity[android:name='.Foodsoft']">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"></action>
+        <action android:name="android.intent.action.DEFAULT"></action>
+        <action android:name="android.intent.action.BROWSABLE"></action>
       </intent-filter>
       <!--
       <intent-filter>
