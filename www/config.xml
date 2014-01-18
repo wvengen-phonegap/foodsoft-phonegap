@@ -41,15 +41,18 @@
 	   https://github.com/ComunidadeExpresso/expressomobile-www/tree/fc578e9567bd4dbada418feec075d2c0ed10888d
       -->
     <gap:config-file platform="android" parent="/manifest/application">
-      <activity android:name="com.phonegap.DroidGap">
         <intent-filter>
           <action android:name="android.intent.action.VIEW"/>
           <action android:name="android.intent.action.DEFAULT" />
           <action android:name="android.intent.action.BROWSABLE" />
           <data android:scheme="https" android:host="foodcoops.github.com" android:pathPrefix="android-app" />
         </intent-filter>
-      </activity>
     </gap:config-file>
+
+    <gap:url-scheme name="com.github.foodcoops.urlscheme" role="None">
+      <scheme>foodsoft</scheme>
+    </gap:url-scheme>
+    <!-- TODO for iOS: gap:url-scheme  -->
 
     <!-- check if patch works -->
     <!-- YES
